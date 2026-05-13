@@ -1,0 +1,50 @@
+1. create folder 
+2. cmd in floder >>> vs code open
+3. vs terminal --->>project initialize---> npm init --y
+
+4. development - ts install--> npm i -D typescript
+5. ts config  tsconfig.json ---> npx tsc --init
+6. tsconfig.json customization --->>>
+
+//uncomment
+ "rootDir": "./src",
+ "outDir": "./dist",
+
+"module": "esnext",
+"types": ["node"],
+
+//comment
+//"jsx": "react-jsx",
+
+7. package.json >>> "type": "commonjs", change>>> "type": "module",
+8. create root>>> src folder
+
+src folder >>> server.ts
+
+9. express install >>> npm install express
+10. import express from "express" --error dorse tai 
+install - npm i --save-dev @types/express  -->>error ok
+
+11. google npm tsx install--> npm i tsx >> npm i -D tsx
+12. package.json >> "dev": "tsx watch ./src/server.ts",
+"scripts": {
+    "dev": "tsx watch ./src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+13. npm run dev >>> 
+app.get('/, (req, res) => {
+  res.send('Express Server!')
+});
+http://localhost:5000/  --> Hello World/Express Server! ok
+
+
+OR================OR =====OR
+
+app.get('/user', (req, res) => {
+  res.send('Express Server !')
+});
+http://localhost:5000/user  >>> Express Server!
+
+
+
