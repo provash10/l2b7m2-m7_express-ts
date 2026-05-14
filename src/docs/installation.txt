@@ -1,5 +1,7 @@
 ph gitHub link - https://github.com/Apollo-Level2-Web-Dev/be-a-node-express-expert-b7/tree/module-7
 
+
+//7-1
 1. create folder 
 2. cmd in floder >>> vs code open
 3. vs terminal --->>project initialize---> npm init --y
