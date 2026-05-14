@@ -1,0 +1,6 @@
+1. neonDB
+2. postgre  npm i pg   pg support by => npm i --save-dev @types/pg 
+
+================
+7-4 Explore SQL Data types
+
