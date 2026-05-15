@@ -119,7 +119,7 @@ app.get('/api/users/:id',async(req: Request, res: Response)=>{
 
       //user not found
       if(result.rows.length ===0){
-        res.status(500).json({
+        res.status(404).json({
         success : false,
         message : "User Not Found",
         data: {},
@@ -142,8 +142,46 @@ app.get('/api/users/:id',async(req: Request, res: Response)=>{
 })
 
 
+//PUT
+
+app.put('/api/users/:id', async(req: Request, res: Response)=>{
+  try {
+    const {id} = req.params;
+  const {name, password, age, is_active} =req.body;
+  // console.log("ID : ", id);
+  // console.log({name, password, age, is_active});
+  const result = await pool.query(`
+    UPDATE users SET name=$1, password=$2,age=&3,is_active=$4
+    WHERE id =$5  RETURNING *
+    `,[name,password,age,is_active,id]);
+    // console.log(result);
+
+     //user not found
+      if(result.rows.length ===0){
+        res.status(404).json({
+        success : false,
+        message : "User Not Found",
+        data: {},
+      })
+
+    res.status(200).json({
+        success : true,
+        message : "Users Updated Successfully",
+        data: result.rows[0],
+      })
+  } catch (error : any) {
+    res.status(500).json({
+        success : false,
+        message : error.message,
+        error: error,
+      });
+  }
+})
+
+
 
 //==========================
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+

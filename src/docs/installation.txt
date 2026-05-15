@@ -51,4 +51,7 @@ app.get('/user', (req, res) => {
 http://localhost:5000/user  >>> Express Server!
 
 
+https://www.w3schools.com/postgresql/
+https://www.w3schools.com/postgresql/postgresql_update.php
+
 
