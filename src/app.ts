@@ -6,6 +6,7 @@ import express, {
 
 import config from "./config";
 import { initDB, pool } from "./db";
+import { userRoute } from "./modules/user/user.route";
 
 
 const app: Application = express();
@@ -28,43 +29,13 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
-app.post("/api/users", async (req: Request, res: Response) => {
-  // console.log(req.body);
-  // const body = req.body;
-  // res.status(201).json({
-  //   message: "Created",
-  //   data: body,
-  // })
-  const { name, email, password, age } = req.body;
 
-  try {
-    const result = await pool.query(
-      `
-    INSERT INTO users(name,email,password,age) VALUES($1,$2,$3,$4)
-    RETURNING *
-    `,
-      [name, email, password, age]
-    );
-    // console.log(result);
+app.use("/api/users",userRoute);
 
-    res.status(201).json({
-      success : true,
-      message: "User Created Successfully!!",
-      // data: {
-      //   name, email, password, age,
-      // },
-      data: result.rows[0],
-    });
-  } catch (error: any) {
-    res.status(500).json({
-      success : false,
-      message: error.message,
-      error: error,
-    });
-  }
-});
+//POST/Create
 
 
+//GET All
 app.get('/api/users', async(req : Request, res : Response)=>{
   try {
     const result = await pool.query(`
@@ -84,7 +55,7 @@ app.get('/api/users', async(req : Request, res : Response)=>{
   }
 })
 
-
+//GET Single
 app.get('/api/users/:id',async(req: Request, res: Response)=>{
   // const id = req.params;
   const {id} = req.params;
@@ -121,7 +92,6 @@ app.get('/api/users/:id',async(req: Request, res: Response)=>{
 
 
 //PUT
-
 app.put('/api/users/:id', async(req: Request, res: Response)=>{
   try {
     const {id} = req.params;
@@ -162,7 +132,7 @@ app.put('/api/users/:id', async(req: Request, res: Response)=>{
   }
 })
 
-
+//DELETE
 app.delete("/api/users/:id", async(req: Request, res: Response)=>{
   const {id} = req.params;
   try {
