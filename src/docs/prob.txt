@@ -1,0 +1,3 @@
+1. drop and cascade when create bcrypt
+2. accesstoken false
+3. express middleware not found

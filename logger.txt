@@ -1,0 +1,8 @@
+Method -> GET Time -> 1779164860854 URL -> /Method -> GET - Time -> 1779164913789 - URL -> /
+Method -> GET - Time -> 1779165028171 - URL -> /
+
+Method -> GET - Time -> 1779165031184 - URL -> /products
+
+Method -> GET - Time -> 1779165046474 - URL -> /api/user
+
+Method -> GET - Time -> 1779165054853 - URL -> /api/users
