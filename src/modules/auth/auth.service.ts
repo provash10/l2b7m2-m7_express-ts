@@ -18,16 +18,21 @@ const loginUserIntoDb = async(payload: {
     );
     
     if (userData.rows.length === 0){
-        throw new Error ("Invalid Credentials")
+        throw new Error ("Invalid Credentials!")
     }
+
     const user = userData.rows[0];
-    // console.log(user);
-    const matchPassword = await bcrypt.compare(password, user.password)
-    // console.log(matchPassword)
+    // console.log(user);   //ok email password
+
+
+     //2. compare the password -ook
+    const matchPassword = await bcrypt.compare(password,user.password);
+    console.log(matchPassword)  // false - not ok - true hobe
+
     if(!matchPassword){
-         throw new Error ("Invalid Credentials")
+         throw new Error ("Invalid Credentials!")
     }
-    //2. compare the password -ook
+   
 
 
 
@@ -40,12 +45,11 @@ const loginUserIntoDb = async(payload: {
         email: user.email
     }
 
-    const accessToken = jwt.sign(jwtpayload, config.secret as string,{
+    const accessToken = jwt.sign(jwtpayload,config.secret as string,{
         expiresIn: "1d",
     })
 
     return {accessToken};
-
 
 };
 

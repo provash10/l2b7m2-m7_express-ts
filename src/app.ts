@@ -9,8 +9,8 @@ import { initDB, pool } from "./db";
 import { userRoute } from "./modules/user/user.route";
 import { profileRoute } from "./modules/profile/profile.route";
 import { authRoute } from "./modules/auth/auth.route";
+import logger from "./middleware/logger";
 
-import fs from "fs";
 
 
 const app: Application = express();
@@ -23,15 +23,8 @@ app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
 
 //custome middleware
-app.use((req, res, next)=>{
-  // console.log("Method - URL - Time:",req.method,req.url, Date.now());
-  const log =`\nMethod -> ${req.method} - Time -> ${Date.now()} - URL -> ${req.url}\n`;
-  fs.appendFile('logger.txt',log,(err)=>{
-    console.log(err)
-  })
-
-  next();
-})
+//for full app
+app.use(logger);
 
 
 // initDB();

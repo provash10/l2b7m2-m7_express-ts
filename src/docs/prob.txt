@@ -1,3 +1,74 @@
-1. drop and cascade when create bcrypt
-2. accesstoken false
-3. express middleware not found
+1. 4.10 min --->  solved ok
+Create User- http://localhost:5000/api/users  
+send --->> Error hashPassword
+user.service.ts
+
+//name,email,age,created_at,updated_at
+
+db>index.ts-->   solved ok
+5.30 Min >>> drop and cascade when create bcrypt   
+
+>>>> Hide password to create user by deleting password -> return result problem solved
+ 
+3. accesstoken false --problem solved ok ---true...
+
+9.50 min-->> auth--> nr-->>
+POST >>> http://localhost:5000/api/auth/login  ----if have user in Neondb 
+--->>>> email and password  ---->>> true (console) --->>>> problem solved 
+{
+    "success": true,
+    "message": "User Logged In Successfully",
+    "data": {
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkJpbmFUZXN0IiwiaXNfYWN0aXZlIjp0cnVlLCJlbWFpbCI6IkJpbmF0ZXN0MjZAZ21haWwuY29tIiwiaWF0IjoxNzc5MzU2OTg0LCJleHAiOjE3Nzk0NDMzODR9.3qEjZprZaMgDVeDdXauryyRRxCOAl01fqxxdkWxRRro"
+    }
+} 
+
+
+=============
+13.00 Min  auth.service.ts ---->>>>problem solved
+ console.log(matchPassword)  // false - not ok - true hobe
+{
+     "email": "koli20@gmail.com",
+        "password": "Koli100"
+}
+ {
+    "success": false,
+    "message": "Invalid Credentials",
+    "error": {}
+}
+
+===>>>
+{
+    "success": true,
+    "message": "User Logged In Successfully",
+    "data": {
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkJpbmFUZXN0IiwiaXNfYWN0aXZlIjp0cnVlLCJlbWFpbCI6IkJpbmF0ZXN0MjZAZ21haWwuY29tIiwiaWF0IjoxNzc5MzU3ODcyLCJleHAiOjE3Nzk0NDQyNzJ9.MZfF_pu5uHTE3PPIwOnl2t1ZANPQrK5jS_ZCANAhRoY"
+    }
+}
+
+and terminal ---true if match password
+
+3. express middleware not found 
+1. google search jwt -->>>npm - jsonwebtoken
+- https://www.npmjs.com/package/jsonwebtoken 
+install - npm i jsonwebtoken  
+ jwt = require('jsonwebtoken');  type not found . solvedimport jwt from 'jsonwebtoken'   
+ npm i --save-dev @types/jsonwebtoken   -->>ok
+ config -->secret : process.env.JWT_SECRET
+ env -> JWT_SECRET=ilok@ahtok
+
+ Auth ---  -->>> POST - http://localhost:5000/api/auth/login  send 
+
+
+ {
+    "success": true,
+    "message": "User Logged In Successfully.",
+    "data": {
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkJpbmFUZXN0IiwiaXNfYWN0aXZlIjp0cnVlLCJlbWFpbCI6IkJpbmF0ZXN0MjZAZ21haWwuY29tIiwiaWF0IjoxNzc5MzU5NDUzLCJleHAiOjE3Nzk0NDU4NTN9.WutggL1LSVzEzuI-50_7CIm9URUKfUERiqR0d7okeUI"
+    }
+}
+
+
+ok from neondb
+
+
